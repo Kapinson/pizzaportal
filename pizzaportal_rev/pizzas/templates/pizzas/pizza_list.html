@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+
+{% block content %}
+{% for pizza in all_pizzas %}
+    <div class="content container">
+    <div class="row">
+    <div class="post">
+        <h1><p>{{pizza.name}}</p></h1> <div class="order-counter" value={{pizza.id}}></div>
+        <p>Opis: {{pizza.description}}</p>
+        <p>{{pizza.price}} PLN {{linebreaksbr}}</p>
+        <button class="btn add-to-order btn-warning" value={{pizza.id}}>Dodaj do zamówienia</button>
+        <p>
+        </p>
+    </div>
+    </div>
+    </div>
+{%endfor%}
+{% endblock content %}
