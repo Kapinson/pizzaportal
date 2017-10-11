@@ -25,9 +25,6 @@ $(document).ready(function () {
     order_list.sort();
     var consumable_list = $('.order-counter');
     var compare_count = 1;
-    //console.log('prop_compare: '+ prop_compare);
-
-    //counting number of props in order
     for (prop in order_list) {
         prop = parseInt(prop);
         //for each prop in order check if there is any with the same id as consumable

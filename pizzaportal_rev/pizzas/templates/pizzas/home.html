@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script type="text/javascript" src="{% static "js/pizza-post-button.js" %}"></script>
     <script type="text/javascript" src="{% static "js/shopping-cart-list.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/order-post-button.js" %}"></script>
     <title>Title</title>
 </head>
 <body>
@@ -40,7 +41,7 @@
                         </a>
                         <ul id="shopping-cart" class="dropdown-menu">
                             <li>
-                                <form method="POST" class="add-pizza-form" action="/order/">
+                                <form method="POST" class="add-pizza-form">
                                     {% csrf_token %}
                                     <input type="submit" class="btn post-pizza-button btn-warning"
                                            value="Podsumowanie zamówienia" name="mybtn">

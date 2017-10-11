@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.shortcuts import render, redirect, HttpResponse
 from django.template.defaulttags import register
 from decimal import *

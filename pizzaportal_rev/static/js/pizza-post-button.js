@@ -96,13 +96,10 @@ $(document).ready(function () {
         var ele = $(this).val();
         if (ele != null) {
             var check = getCookie('orderlist');
-            console.log(check);
             if (check != null && check != "") {
                 check = ele + ',' + check;
                 check = check.split(',')
                 check.sort();
-                //check = check.join(',');
-                console.log(check);
                 document.cookie = "orderlist=" + check;
             } else {
                 document.cookie = "orderlist=" + ele;
@@ -116,25 +113,20 @@ $(document).ready(function () {
         var ele = $(this).val();
         if (ele != null) {
             var check = getCookie('orderlist');
-            console.log(check);
             if (check != null && check != "") {
                 check = check.split(',');
                 var i = check.indexOf(ele);
                 if (i != -1) {
                     check.splice(i, 1);
                 }
-                console.log(check);
                 document.cookie = "orderlist=" + check;
             } else {
-                console.log("No order data");
             }
 
         }
         ;
         refreshBasket();
     });
-
-    //$('.order-counter')
 
 
 });
