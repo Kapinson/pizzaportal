@@ -36,6 +36,12 @@ def order_list(request):
                                                           'total_price':total_price})
     return response
 
+def order_confirmed(request):
+    
+    response = render(request, 'orders/order_confirmed.html', {})
+
+    return response
+
 @register.filter
 def get_item(dictionary, key):
     return dictionary.get(key)
