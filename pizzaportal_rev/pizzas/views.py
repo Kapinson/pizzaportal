@@ -14,7 +14,7 @@ def pizza_list(request):
         print(order_convert(request.session.get('order')))
         return redirect('order_list')
         
-    response = render(request, 'pizzas/home.html', {'all_pizzas' : all_pizzas, 'my_pizza': my_pizza})
+    response = render(request, 'pizzas/pizza_list.html', {'all_pizzas' : all_pizzas, 'my_pizza': my_pizza})
     return response
 
 @register.filter

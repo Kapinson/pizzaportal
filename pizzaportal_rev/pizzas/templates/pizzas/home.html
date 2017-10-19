@@ -1,5 +1,7 @@
-{% load staticfiles %}
 <!DOCTYPE html>
+
+{% load staticfiles %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,9 +30,10 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Pizza</a></li>
-                    <li><a href="#">Przystawki</a></li>
-                    <li><a href="#">Napoje</a></li>
+                    <li class="active"><a href="/pizzas">Pizza</a></li>
+                    <li><a href="/sandwiches">Kanapki</a></li>
+                    <li><a href="/appetizers">Przystawki</a></li>
+                    <li><a href="/drinks">Napoje</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="navbar-right">
@@ -58,29 +61,5 @@
 </div>
 {% block content %}
 {% endblock %}
-
-<div class="content container">
-    {% for pizza in all_pizzas %}
-        <div class="row">
-            <div class="post">
-                <h1>
-                    <p>
-                    <div class="order-counter" value={{ pizza.id }}>
-                        {{ pizza.name }}
-                    </div>
-                    </p>
-                </h1>
-                <p class="consumable-description">Opis: {{ pizza.description }}</p>
-                <p>{{ pizza.price }} PLN {{ linebreaksbr }}</p>
-                <button class="btn add-to-order btn-warning" value={{ pizza.id }}>+</button>
-                <button class="btn remove-from-order btn-warning" value={{ pizza.id }}>-</button>
-                <p>
-                </p>
-            </div>
-        </div>
-    {% endfor %}
-</div>
-
-
 </body>
 </html>

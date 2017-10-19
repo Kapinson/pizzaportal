@@ -1,18 +1,24 @@
-{% extends 'home.html' %}
-
+{% extends 'pizzas/home.html' %} 
 {% block content %}
-{% for pizza in all_pizzas %}
     <div class="content container">
-    <div class="row">
-    <div class="post">
-        <h1><p>{{pizza.name}}</p></h1> <div class="order-counter" value={{pizza.id}}></div>
-        <p>Opis: {{pizza.description}}</p>
-        <p>{{pizza.price}} PLN {{linebreaksbr}}</p>
-        <button class="btn add-to-order btn-warning" value={{pizza.id}}>Dodaj do zamówienia</button>
-        <p>
-        </p>
+        {% for pizza in all_pizzas %}
+        <div class="row">
+            <div class="post">
+                <h1>
+                    <p>
+                        <div class="order-counter" value={{ pizza.id }}>
+                            {{ pizza.name }}
+                        </div>
+                    </p>
+                </h1>
+                <p class="consumable-description">Opis: {{ pizza.description }}</p>
+                <p>{{ pizza.price }} PLN {{ linebreaksbr }}</p>
+                <button class="btn add-to-order btn-warning" value={{ pizza.id }}>+</button>
+                <button class="btn remove-from-order btn-warning" value={{ pizza.id }}>-</button>
+                <p>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    </div>
-    </div>
-{%endfor%}
 {% endblock content %}
