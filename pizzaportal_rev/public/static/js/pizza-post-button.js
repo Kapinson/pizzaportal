@@ -32,7 +32,7 @@ $(document).ready(function () {
             }
         }
     });
-    //posting ajax
+    //postujacy ajax
     /*
     var csrftoken = getCookie('csrftoken');
     console.log('2,5');
@@ -50,10 +50,7 @@ $(document).ready(function () {
     });
     */
 
-    //cookie name is nested in each respectable container
-    var cookie_name = $('.container').attr("value");
-    
-    //makes and refreshes basket
+    //tworzy i odswieża koszyk
     function refreshBasket() {
 
         try {
@@ -61,7 +58,8 @@ $(document).ready(function () {
         } finally {
             console.log("refreshBasket executed");
         }
-        var order_list = getCookie(cookie_name);
+
+        var order_list = getCookie('orderlist');
         order_list = order_list.split(',');
         order_list.sort();
         var consumable_list = $('.order-counter');
@@ -97,14 +95,14 @@ $(document).ready(function () {
     $('.add-to-order').click(function (event) {
         var ele = $(this).val();
         if (ele != null) {
-            var check = getCookie(cookie_name);
+            var check = getCookie('orderlist');
             if (check != null && check != "") {
                 check = ele + ',' + check;
                 check = check.split(',')
                 check.sort();
-                document.cookie = cookie_name + "=" + check;
+                document.cookie = "orderlist=" + check;
             } else {
-                document.cookie = cookie_name + "=" + ele;
+                document.cookie = "orderlist=" + ele;
             }
         }
         ;
@@ -114,14 +112,14 @@ $(document).ready(function () {
     $('.remove-from-order').click(function (event) {
         var ele = $(this).val();
         if (ele != null) {
-            var check = getCookie(cookie_name);
+            var check = getCookie('orderlist');
             if (check != null && check != "") {
                 check = check.split(',');
                 var i = check.indexOf(ele);
                 if (i != -1) {
                     check.splice(i, 1);
                 }
-                document.cookie = cookie_name + "=" + check;
+                document.cookie = "orderlist=" + check;
             } else {
             }
 

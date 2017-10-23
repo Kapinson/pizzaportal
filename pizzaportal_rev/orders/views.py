@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.template.defaulttags import register
 from decimal import *
-
-
 from .forms import OrderForm
 
 from .models import Order
@@ -10,9 +8,20 @@ from pizzas.models import Pizza
 
 # Create your views here.
 
+
+'''
+this solution is for now, have to make it
+'''
+consumable_app_list = {
+    'pizzas',
+    'sandwiches',
+    'appetizers',
+    'drinks'
+}
+
 def order_list(request):
     pizzas = Pizza.objects.all()
-    my_order = request.session.get('order')
+    my_order = request.session.get('pizzas')
     my_order = order_convert(my_order)
     total_price = total_order_price(my_order, pizzas)
 
@@ -21,10 +30,9 @@ def order_list(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
-            order.consumables = total_order_consumeables(my_order, pizzas)
+            order.consumables = total_order_consumables(my_order, pizzas)
             order.total_price = total_price
             order.save()
-            #return redirect('post_detail', pk=order.pk) wywala na post_detail nie używaj
             form = OrderForm()
             print('Zamówienie zatwierdzone i zapisane w bazie')
     else:
@@ -50,20 +58,20 @@ def get_item(dictionary, key):
 def consumeable_quantity_to_price(quantity, price):
     return(int(quantity)*int(price))
 
-def total_order_price(my_order, pizzas):
+def total_order_price(my_order, consumables):
     total_price = 0
     for prop in my_order:
-        for pizza in pizzas:
-            if pizza.id == prop:
-                total_price += consumeable_quantity_to_price(get_item(my_order, prop), pizza.price)
+        for consumable in consumables:
+            if consumable.id == prop:
+                total_price += consumeable_quantity_to_price(get_item(my_order, prop), consumable.price)
     return(Decimal(total_price))
 
-def total_order_consumeables(my_order, pizzas):
+def total_order_consumables(my_order, consumables):
     total_consumeables = ''
     for prop in my_order:
-        for pizza in pizzas:
-            if pizza.id == prop:
-                total_consumeables += pizza.name + ', '
+        for consumable in consumables:
+            if consumable.id == prop:
+                total_consumeables += consumable.name + ', '
     return(total_consumeables)
 
 def order_convert(my_order):

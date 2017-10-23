@@ -1,0 +1,26 @@
+{% extends 'appetizers/home.html' %} 
+{% block content %}
+    <div class="content container" value="appetizers">
+        {% for appetizer in all_appetizers %}
+        <div class="row">
+            <div class="post">
+                <h1>
+                    <p>
+                        <div class="order-counter" value={{ appetizer.id }}>
+                            {{ appetizer.name }}
+                        </div>
+                    </p>
+                </h1>
+                <p class="consumable-description">Opis: {{ appetizer.description }}</p>
+                <p>{{ appetizer.price }} PLN {{ linebreaksbr }}</p>
+                <button class="btn add-to-order btn-warning" value={{ appetizer.id }}>+</button>
+                <button class="btn remove-from-order btn-warning" value={{ appetizer.id }}>-</button>
+                <p>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock content %}

@@ -1,7 +1,7 @@
-{% extends 'pizzas/home.html' %} 
+{% extends 'sandwiches/home.html' %} 
 {% block content %}
-    <div class="content container" value="pizzas">
-        {% for pizza in all_pizzas %}
+    <div class="content container" value="sandwiches">
+        {% for sandwich in all_sandwiches %}
         <div class="row">
             <div class="post">
                 <h1>
@@ -21,4 +21,6 @@
         </div>
         {% endfor %}
     </div>
+
+
 {% endblock content %}

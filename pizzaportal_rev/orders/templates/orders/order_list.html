@@ -1,47 +1,5 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
-    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/pizzaportal.css' %}">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="{% static "js/pizza-post-button.js" %}"></script>
-    <title>Pizza - Portal</title>
-</head>
-<body>
-<div class="page-header container-fluid">
-    <h1><a href="/">Pizza - Portal</a></h1>
-</div>
-<div>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="#" class="navbar-brand">MENU</a>
-        </div>
-        <div>
-            <ul class="nav navbar-nav">
-                <li><a href="#">Pizza</a></li>
-                <li><a href="#">Kanapki</a></li>
-                <li><a href="#">Przystawki</a></li>
-                <li><a href="#">Napoje</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="navbar-right active">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-shopping-cart"></span>
-                        </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-</div>
-
+{% extends 'orders/home.html' %}
+{% block content %}
 <div class="content container-fluid">
 <h1>Dane kontaktowe</h1>
     <form method="POST" class="post-form">{% csrf_token %}
@@ -70,5 +28,4 @@
   {%endfor%}
 {%endfor%}
 
-</body>
-</html>
+{% endblock content %}

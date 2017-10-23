@@ -1,0 +1,26 @@
+{% extends 'drinks/home.html' %} 
+{% block content %}
+    <div class="content container" value="drinks">
+        {% for drink in all_drinks %}
+        <div class="row">
+            <div class="post">
+                <h1>
+                    <p>
+                        <div class="order-counter" value={{ drink.id }}>
+                            {{ drink.name }}
+                        </div>
+                    </p>
+                </h1>
+                <p class="consumable-description">Opis: {{ drink.description }}</p>
+                <p>{{ drink.price }} PLN {{ linebreaksbr }}</p>
+                <button class="btn add-to-order btn-warning" value={{ drink.id }}>+</button>
+                <button class="btn remove-from-order btn-warning" value={{ drink.id }}>-</button>
+                <p>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock content %}
